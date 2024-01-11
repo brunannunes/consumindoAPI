@@ -1,5 +1,6 @@
 'use strict';
 
+//function for clean the forms
 const limparFormulario = (endereco) =>{
     document.getElementById('endereco').value = '';
     document.getElementById('bairro').value = '';
@@ -7,6 +8,7 @@ const limparFormulario = (endereco) =>{
     document.getElementById('estado').value = '';
 }
 
+//function for fill in the blank spaces
 const preencherFormulario = (endereco) =>{  
     document.getElementById('endereco').value = endereco.logradouro;
     document.getElementById('bairro').value = endereco.bairro;
@@ -14,12 +16,12 @@ const preencherFormulario = (endereco) =>{
     document.getElementById('estado').value = endereco.uf;
 }
 
-const eNumero = (numero) => /^[0-9]+$/.test(numero);//(^) verifica se começa com um numero, ($) verifica se termina com um numero
+const eNumero = (numero) => /^[0-9]+$/.test(numero);//(^)verification to see if starts with a number, ($) verification to see if ends with a number
 
-//verificação para saber se cep tem até 8 digitos e se esses digitos são somente numeros
+//verificatio to see if the cep has 8 digits and if they are numbers
 const cepValido = (cep) => cep.length == 8 && eNumero(cep);
 
-//ao sair do campo selecionado ele executara a função de retornar o cep digitado
+//When the focusout happen it will execute the function bellow and return the cep select
 const pesquisarCep = async() =>{
     limparFormulario();
     const cep = document.getElementById('cep').value;
@@ -38,5 +40,5 @@ const pesquisarCep = async() =>{
   
 }
 
-//pegara o elemento cep encontrado no html, e depois que "sair do foco" ele irá pesquisar o cep
+// will get a element 'ceo' in the html, then execute the function 'pesquisar cep' 
 document.getElementById('cep').addEventListener('focusout', pesquisarCep);
